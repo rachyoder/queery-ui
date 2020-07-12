@@ -1,11 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import LoginRegister from './components/LoginRegister';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
 
-function App() {
-  return (
-    <div>Hello World</div>
-  );
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: '',
+    }
+    this.grabToken = this.grabToken.bind(this);
+  }
+
+  grabToken(token) {
+    this.setState({ token: token });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <LoginRegister grabToken={this.grabToken} />
+      </React.Fragment>
+    );
+  }
 }
-
-export default App;
