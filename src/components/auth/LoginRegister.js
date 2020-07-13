@@ -75,7 +75,6 @@ export default class LoginRegister extends React.Component {
         return (
             <React.Fragment>
                 <Button onClick={this.toggleModal}>Login/Register</Button>
-
                 <Modal isOpen={this.state.modal} autoFocus={true} centered={true} toggle={this.toggleModal}>
                     <ModalHeader>Welcome to Queery!</ModalHeader>
                     <Nav tabs>
@@ -97,18 +96,20 @@ export default class LoginRegister extends React.Component {
                                 </TabPane>
                             </TabContent>
                             {
-                                this.state.error ? (
-                                    <p className='text-danger'>The information you put in is incorrect. Please try again...</p>
-                                ): (
-                                    null
-                                    )}
+                                this.state.error ?
+                                    (
+                                        <p className='text-danger'>The information you put in is incorrect. Please try again...</p>
+                                    ) : (
+                                        null
+                                    )
+                            }
                         </ModalBody>
                         <ModalFooter>
                             <Button type='submit' block={true}>Submit</Button>
                         </ModalFooter>
                     </Form>
                 </Modal>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

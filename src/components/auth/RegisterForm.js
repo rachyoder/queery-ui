@@ -13,6 +13,7 @@ class RegisterForm extends Component {
         this.handleChange =this.handleChange.bind(this);
     }
 
+    // Saves input values in state and passes along for form submission
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
         this.props.pullState(event.target.name, event.target.value);
