@@ -8,15 +8,18 @@ class SearchBar extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             search: '',
+            results: [],
         }
     }
 
     handleChange(event) {
         this.setState({ [event.target.name]: event.target.value });
-        let $value = { title: event.target.value };
-        API_Calls.__post($value, '/titlesearch', '')
+        let value = { title: event.target.value };
+        this.props.grabQuery(event.target.value);
+        API_Calls.__post(value, '/titlesearch', '')
             .then(res => {
                 this.setState({ results: res.data });
+                this.props.grabResults(this.state.results);
             })
     }
 

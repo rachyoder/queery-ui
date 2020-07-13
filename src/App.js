@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginRegister from './components/auth/LoginRegister';
 import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchResults';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
 import { Button, Row, Container } from 'reactstrap';
@@ -13,9 +14,13 @@ export default class App extends React.Component {
 		super(props);
 		this.state = {
 			token: '',
+			results: [],
+			query: '',
 		}
 		this.grabToken = this.grabToken.bind(this);
 		this.logout = this.logout.bind(this);
+		this.grabResults = this.grabResults.bind(this);
+		this.grabQuery = this.grabQuery.bind(this);
 	}
 
 	grabToken(token) {
@@ -31,6 +36,15 @@ export default class App extends React.Component {
 			})
 	}
 
+	// Grabs the results of the search query
+	grabResults(results) {
+		this.setState({ results: results });
+	}
+
+	grabQuery(query) {
+		this.setState({ query: query });
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -44,7 +58,8 @@ export default class App extends React.Component {
 								<LoginRegister grabToken={this.grabToken} token={this.state.token} />
 							)}
 					</Row>
-					<SearchBar />
+					<SearchBar grabResults={this.grabResults} grabQuery={this.grabQuery} />
+					<SearchResults results={this.state.results} query={this.state.query} />
 				</Container>
 			</React.Fragment>
 
