@@ -1,0 +1,31 @@
+html, body {
+    font-family: 'Abel', sans-serif;
+}
+
+#hero-search {
+    height: 70vh;
+    min-height: 60vh;
+    background-color: #e66b00;
+    text-align: center;
+}
+
+#hero-title {
+    margin: auto;
+    text-align: left;
+    font-family: 'Abel', sans-serif;
+    font-weight: 800;
+    font-size: 10vh;
+    color: white;
+}
+
+.h-90 {
+    height: 90% !important;
+}
+
+#card-title {
+    
+}
+
+#card-desc {
+    text-align: left;
+}

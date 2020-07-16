@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, Row, Container } from 'reactstrap';
+import { Card, Row, Col, Container } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class SearchResults extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const results = this.props.results.map((result, idx) => {
+            let path = '/' + result.title + '-' + result.id;
             return (
                 <Row key={idx} className='my-4'>
-                    <Card body className='py-1'>
-                        <CardTitle>{result.title}</CardTitle>
-                        <CardText>{result.body}</CardText>
-                    </Card>
+                    <Col xs='12' className='pr-0'>
+                        <Link to={path}>
+                            <Card id={result.id} body>
+                                <Row>
+                                    <Col xs='3' id='card-title' >
+                                        <strong>{result.title}</strong>
+                                    </Col>
+                                    <Col xs='9' id='card-desc' >{result.desc}</Col>
+                                </Row>
+                            </Card>
+                        </Link>
+                    </Col>
                 </Row>
             )
         });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Input, Row } from 'reactstrap';
+import { Input } from 'reactstrap';
 import API_Calls from './utilities/Axios';
+import './SearchBar.css';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -26,9 +27,7 @@ class SearchBar extends Component {
     render() {
         return (
             <React.Fragment>
-                <Row>
-                    <Input type='text' name='search' id='search-field' placeholder="What's your Queery?" onChange={this.handleChange} value={this.state.search} />
-                </Row>
+                <Input type='text' name='search' id='search-field' placeholder="Search..." onChange={this.handleChange} value={this.state.search} />
             </React.Fragment>
         );
     }
