@@ -6,10 +6,11 @@ class SearchResults extends Component {
     render() {
         const results = this.props.results.map((result, idx) => {
             let path = '/' + result.title + '-' + result.id;
+            let id = result.id;
             return (
                 <Row key={idx} className='my-4'>
                     <Col xs='12' className='pr-0'>
-                        <Link to={path}>
+                        <Link id={result.idx} to={path} onClick={() => {this.props.grabPath(path, id)}}>
                             <Card id={result.id} body>
                                 <Row>
                                     <Col xs='3' id='card-title' >

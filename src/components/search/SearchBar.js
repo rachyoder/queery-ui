@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from 'reactstrap';
-import API_Calls from './utilities/Axios';
+import API_Calls from '../utilities/Axios';
 import './SearchBar.css';
 
 class SearchBar extends Component {

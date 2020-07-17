@@ -5,7 +5,7 @@ html, body {
 #hero-search {
     height: 70vh;
     min-height: 60vh;
-    background-color: #e66b00;
+    background-image: linear-gradient(to bottom left,#eb9a64,#e66b00);
     text-align: center;
 }
 
