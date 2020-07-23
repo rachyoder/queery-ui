@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import API_Calls from '../components/utilities/Axios';
-import { Container, Row, Col, Spinner } from 'reactstrap';
 import ArticleLayout from '../components/ArticleLayout';
+import Loading from '../components/Loading';
 
 class ArticleView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            article: {},
+            article: null,
         }
     }
 
@@ -21,7 +21,6 @@ class ArticleView extends Component {
         API_Calls.__get(api_path, '')
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     this.setState({ article: res.data });
                 } else {
                     console.log('redirect to 404 page');
@@ -31,18 +30,9 @@ class ArticleView extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.article ?
-                    (<ArticleLayout article={this.state.article} />) : (
-                        <Container>
-                            <Row>
-                                <Col xs='12'>
-                                    <Spinner size='lg' />
-                                </Col>
-                            </Row>
-                        </Container>
-                    )}
-            </div>
+            <React.Fragment>
+                {this.state.article ? (<ArticleLayout article={this.state.article} />) : ( <Loading /> )}
+            </React.Fragment>
         );
     }
 }
